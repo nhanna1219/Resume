@@ -49,8 +49,18 @@ Start Content
   <div class="lightBg mt-5">
     <div class="container">
       <div class="portfolioContentMain">
-        <div class="row g-3 g-md-4 g-lg-5 portfolioRow">
+        <div class="row g-3 g-md-4 portfolioRow">
           {% for obj in object_list %}
+          {% if obj.name == "CareMinder" %}
+          <div class="col-md-6 pColMain">
+            <div class="pCol">
+              <a href="{% url 'main:portfolio' slug=obj.slug %}">
+                <img src="{{obj.image.url}}" alt="..." class="" width="100%" height="60%">
+                <p class="text-center mt-3" style="font-weight: 600;">{{obj.name}}</p>
+              </a>
+            </div>
+          </div>
+          {% else %}
           <div class="col-md-6 pColMain">
             <div class="pCol">
               <a href="{% url 'main:portfolio' slug=obj.slug %}">
@@ -59,6 +69,7 @@ Start Content
               </a>
             </div>
           </div>
+          {% endif %}
           {% endfor %}
 
         </div>

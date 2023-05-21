@@ -35,6 +35,10 @@ Start Content
 <section>
   <div class="bannerSection">
     <div class="container">
+      <div class="text-end">
+        <img id="icon" data-mode="dark" style="margin-top: -150px; cursor: pointer" src="{% static 'images/moon.png' %}"
+          width="45" height="45" />
+      </div>
       <div class="row g-4 g-md-3  align-items-center">
         <div class="col-md-auto order-md-last">
           <div class="bannerUserImg">
@@ -265,7 +269,7 @@ Start Content
               <li>{{b.timestamp.date}}</li>
               <li>{{b.author}}</li>
             </ul>
-            <p>{{b.description}}</p>
+            <p>{{b.description|truncatewords:20}}</p>
           </div>
         </div>
         {% endif %}

@@ -4,7 +4,7 @@ $('.navToggle').on('click', function (e) {
 });
 
 
-$(window).scroll(function(){
+$(window).scroll(function () {
   if ($(this).scrollTop() > 10) {
     $('body').addClass('fixedHeader');
   } else {
@@ -47,3 +47,53 @@ var swiper = new Swiper(".certificatesSlider", {
     },
   },
 });
+
+
+
+var icon = document.getElementById('icon');
+if (icon) {
+  icon.addEventListener('click', function () {
+    let mode = this.dataset.mode
+    setTheme(mode)
+  });
+}
+
+let theme = localStorage.getItem('theme')
+
+if (theme == null) {
+  setTheme("dark")
+}
+else {
+  setTheme(theme)
+}
+
+
+
+function setTheme(mode) {
+  console.log(mode)
+  if (icon) {
+    if (mode == "dark") {
+      icon.src = "static/images/sun.png"
+      icon.dataset.mode = "light"
+      document.getElementById('theme-style').href = 'static/css/darkTheme.css'
+    }
+    else {
+      icon.src = "static/images/moon.png"
+      icon.dataset.mode = "dark"
+      document.getElementById('theme-style').href = 'static/css/style.css'
+    }
+    localStorage.setItem('theme', mode)
+  }
+  else {
+    if (mode == "dark") {
+      document.getElementById('theme-style').href = '/static/css/darkTheme.css'
+    }
+    else {
+      document.getElementById('theme-style').href = '/static/css/style.css'
+    }
+    localStorage.setItem('theme', mode)
+  }
+}
+
+
+

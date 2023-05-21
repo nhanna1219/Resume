@@ -22,7 +22,8 @@
     ================================= -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@7.0.5/swiper-bundle.min.css" />
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link id="default" href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link id="theme-style" href="" type="text/css" rel="stylesheet" />
     <!-- ================================
     FontAwesome
     ================================= -->
@@ -30,6 +31,7 @@
     <!-- ================================
     End FontAwesome
     ================================= -->
+
     {% block extend_header %}{% endblock %}
     <!-- ================================
     End CSS
@@ -37,7 +39,7 @@
 
   </head>
 
-  <body>
+  <body id="main-content">
     {% include 'main/partials/messages.html' %}
     {% include 'main/partials/nav.html' %}
     {% block content %}{% endblock %}
