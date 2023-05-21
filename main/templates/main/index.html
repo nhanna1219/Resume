@@ -35,11 +35,10 @@ Start Content
 <section>
   <div class="bannerSection">
     <div class="container">
-      <div class="text-end">
-        <img id="icon" data-mode="dark" style="margin-top: -150px; cursor: pointer" src="{% static 'images/moon.png' %}"
-          width="45" height="45" />
+      <div class="toggle-mode">
+        <i class="fa-solid fa-moon" id="icon"></i>
       </div>
-      <div class="row g-4 g-md-3  align-items-center">
+      <div class=" row g-4 g-md-3 align-items-center">
         <div class="col-md-auto order-md-last">
           <div class="bannerUserImg">
             <img src="{{me.userprofile.avatar.url}}" alt="{{me.first_name|title}} {{me.last_name|title}} avatar">

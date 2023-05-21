@@ -823,3 +823,16 @@ input[type=text], input[type=email], select, textarea {
 }
 
 
+#icon {
+  cursor: pointer;
+  font-size: 30px;
+  margin-bottom: 60px;
+  color: black;
+  background-color: white;
+  width: 50px;
+  display: inline-flex;
+  height: 50px;
+  justify-content: center;
+  border-radius: 50%;
+  align-items: center;
+}

@@ -73,12 +73,15 @@ function setTheme(mode) {
   console.log(mode)
   if (icon) {
     if (mode == "dark") {
-      icon.src = "static/images/sun.png"
+      icon.classList.remove("fa-solid", "fa-moon")
+      icon.classList.add("fa-solid", "fa-sun")
       icon.dataset.mode = "light"
       document.getElementById('theme-style').href = 'static/css/darkTheme.css'
     }
     else {
-      icon.src = "static/images/moon.png"
+      console.log("hi")
+      icon.classList.remove("fa-solid", "fa-sun")
+      icon.classList.add("fa-solid", "fa-moon")
       icon.dataset.mode = "dark"
       document.getElementById('theme-style').href = 'static/css/style.css'
     }
