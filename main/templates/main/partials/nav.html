@@ -4,30 +4,39 @@ Start Navigation Bar
 ================================= -->
 <header>
     <div class="headerCol">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-        <div class="col-auto">
-            <div class="logoCol"><a href="{% url 'main:home' %}"><img src="{% static 'images/logo.png' %}" alt="..."></a></div>
-        </div>
-        <div class="col">
-            <div class="d-md-none">
-            <button class="navToggle">
-                <span class="navToggle__text">Toggle Menu</span>
-            </button>
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <div class="logoCol"><a href="{% url 'main:home' %}"></a></div>
+                </div>
+                <div class="col">
+                    <div class="d-md-none">
+                        <button class="navToggle">
+                            <span class="navToggle__text">Toggle Menu</span>
+                        </button>
+                    </div>
+                    <div class="navCollapseCol">
+                        <div class="navCol">
+                            <ul>
+                                <li><a href="{% url 'main:home'%}" style="margin-left: 100px">
+                                        <i class="fa-solid fa-house"
+                                            style="font-size:18px"></i>&nbsp;&nbsp;&nbsp;Home</a>
+                                </li>
+                                <li><a href="{% url 'main:portfolios' %}">
+                                        <i class="fa-solid fa-user-tie"
+                                            style="font-size:18px"></i>&nbsp;&nbsp;&nbsp;Portfolio</a></li>
+                                <li><a href="{% url 'main:blogs' %}">
+                                        <i class="fa-solid fa-file-pen"
+                                            style="font-size:18px"></i>&nbsp;&nbsp;&nbsp;Blog</a></li>
+                                <li><a href="{% url 'main:contact'%}">
+                                        <i class="fa-solid fa-address-card"
+                                            style="font-size:18px"></i>&nbsp;&nbsp;&nbsp;Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="navCollapseCol">
-            <div class="navCol">
-                <ul>
-                <li><a href="{% url 'main:home'%}">Home</a></li>
-                <li><a href="{% url 'main:portfolios' %}">Portfolio</a></li>
-                <li><a href="{% url 'main:blogs' %}">Blog</a></li>
-                <li><a href="{% url 'main:contact'%}">Contact</a></li>
-                </ul>
-            </div>
-            </div>
         </div>
-        </div>
-    </div>
     </div>
 </header>
 <!-- ================================
