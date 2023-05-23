@@ -4,10 +4,15 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-pillow = "*"
-django-ckeditor = "*"
+django = "==4.1.7"
+pillow = "==9.5.0"
+django-ckeditor = "==6.5.1"
 django-hitcount = "*"
+asgiref = "==3.6.0"
+django-js-asset = "==2.0.0"
+sqlparse = "==0.4.3"
+tzdata = "==2023.3"
+django-admin-tools-stats = "*"
 
 [dev-packages]
 

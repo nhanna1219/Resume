@@ -6,6 +6,9 @@
     integrity="sha512-CMF3tQtjOoOJoOKlsS7/2loJlkyctwzSoDK/S40iAB+MqWSaf50uObGQSk5Ny/gfRhRCjNLvoxuCvdnERU4WGg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+    var randomColorGenerator = function () {
+        return '#' + (Math.random().toString(16) + '0000000').slice(2, 8);
+    };
     document.addEventListener('DOMContentLoaded', () => {
         const ctx = document.getElementById('myChart');
         new Chart(ctx, {
@@ -15,7 +18,8 @@
                 datasets: [{
                     label: '# Level of understanding',
                     data: [{% for s in me.userprofile.skills.all %}{{s.score}}, {% endfor %}],
-                    borderWidth: 1
+                    borderWidth: 1,
+                    backgroundColor: [{% for s in me.userprofile.skills.all %}randomColorGenerator(), {% endfor %}],
                 }]
             },
             options: {
