@@ -183,7 +183,7 @@ a, .btn {
   margin-right: 100px;
 }
 .navCol a:hover {
-  color: #f6dc87;
+  color:  rgb(133 180 193);
 }
 .navCol a::before {
   content: "";
@@ -193,7 +193,7 @@ a, .btn {
   bottom: -5px;
   height: 2px;
   border-radius: 2px;
-  background-color: #f6dc87;
+  background-color:  rgb(133 180 193);
   -webkit-transition: all 500ms ease-in-out 0s;
   -o-transition: all 500ms ease-in-out 0s;
   transition: all 500ms ease-in-out 0s;
