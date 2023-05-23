@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'main',
     'ckeditor',
     'hitcount',
-
     'django_nvd3',
 ]
 
