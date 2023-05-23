@@ -1,29 +1,33 @@
 from django.shortcuts import render
 from django.contrib import messages
+from django.contrib.contenttypes.fields import GenericRelation
+from hitcount.models import HitCount
+from hitcount.views import HitCountMixin
 from . models import (
     UserProfile,
     Blog,
     Portfolio,
     Testimonial,
-    Certificate
+    Certificate,
 )
 
 from django.views import generic
-
-
 from . forms import ContactForm
 
 
-class IndexView(generic.TemplateView):
+class IndexView(generic.TemplateView, HitCountMixin):
     template_name = "main/index.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         testimonials = Testimonial.objects.filter(is_active=True)
         certificates = Certificate.objects.filter(is_active=True)
         blogs = Blog.objects.filter(is_active=True)
         portfolio = Portfolio.objects.filter(is_active=True)
+
+        user = UserProfile.objects.first()
+        hit_count = HitCount.objects.get_for_object(user)
+        hit_count_response = HitCountMixin.hit_count(self.request, hit_count)
 
         context["testimonials"] = testimonials
         context["certificates"] = certificates

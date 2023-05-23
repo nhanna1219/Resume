@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
-
+{% load hitcount_tags %}
 <!-- ================================
 Start SEO blocks
 ================================= -->
@@ -46,7 +46,8 @@ Start Content
         </div>
         <div class="col-md">
           <div class="bannerContent">
-            <h1 class="xlTitle text-bold-3" style="letter-spacing: 0.9px;">Hi, I’m {{me.first_name|title}}
+            <h1 class="xlTitle text-bold-3" style="letter-spacing: 0.9px;">Hi, I’m
+              {{me.first_name|title}}
               {{me.last_name|title}}
               <br /> the
               {{me.userprofile.title}}
@@ -192,7 +193,7 @@ Start Content
               <div class="portfolioContentCol">
                 <h4 class="lgTitle"><a href="{% url 'main:portfolio' slug=p.slug %}">{{p.name}}</a></h4>
                 <ul class="portfolioOption">
-                  <li><span class="dateLbl">{{p.date.date}}</span></li>
+                  <li><span class="dateLbl">{{p.date}}</span></li>
                 </ul>
                 <p>{{p.description}}</p>
               </div>
