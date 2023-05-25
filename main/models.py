@@ -7,7 +7,9 @@ from ckeditor.fields import RichTextField
 
 
 class Skill(models.Model):
+    """Skill model"""
     class Meta:
+        """Tên số nhiều và số ít của Skill model"""
         verbose_name_plural = 'Skills'
         verbose_name = 'Skill'
 
@@ -17,11 +19,14 @@ class Skill(models.Model):
     is_key_skill = models.BooleanField(default=False)
 
     def __str__(self):
+        """Lấy tên của Skill"""
         return self.name
 
 
 class UserProfile(models.Model):
+    """UserProfile model"""
     class Meta:
+        """Tên số nhiều và số ít của UserProfile model"""
         verbose_name_plural = 'User Profiles'
         verbose_name = 'User Profile'
 
@@ -33,25 +38,32 @@ class UserProfile(models.Model):
     cv = models.FileField(blank=True, null=True, upload_to="cv")
 
     def __str__(self):
+        """Lấy họ và tên của User"""
         return f'{self.user.first_name} {self.user.last_name}'
 
 
 class ContactProfile(models.Model):
+    """Contact model"""
     class Meta:
+        """Tên số nhiều và số ít, sắp xếp theo mốc thời gian của Contact model"""
         verbose_name_plural = 'Contact Profiles'
         verbose_name = 'Contact Profile'
         ordering = ["timestamp"]
+        
     timestamp = models.DateTimeField(auto_now_add=True)
     name = models.CharField(verbose_name="Name", max_length=100)
     email = models.EmailField(verbose_name="Email")
     message = models.TextField(verbose_name="Message")
 
     def __str__(self):
+        """Lấy tên của người gửi form"""
         return f'{self.name}'
 
 
 class Testimonial(models.Model):
+    """Testimonial model"""
     class Meta:
+        """Tên số nhiều và số ít, sắp xếp theo tên của Testimonial model"""
         verbose_name_plural = 'Testimonials'
         verbose_name = 'Testimonial'
         ordering = ["name"]
@@ -63,11 +75,14 @@ class Testimonial(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
+        """Lấy tên của người lấy lời chứng thực"""
         return self.name
 
 
 class Media(models.Model):
+    """Media model"""
     class Meta:
+        """Tên số nhiều và số ít, sắp xếp theo tên của Media model"""
         verbose_name_plural = 'Media Files'
         verbose_name = 'Media'
         ordering = ["name"]
@@ -78,19 +93,24 @@ class Media(models.Model):
     is_image = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
+        """Lưu thông tin tệp vào database"""
         if self.url:
             self.is_image = False
         super(Media, self).save(*args, **kwargs)
 
     def __str__(self):
+        """Lấy tên của tệp đa phương tiện"""
         return self.name
 
 
 class Portfolio(models.Model):
+    """Portfolio model"""
     class Meta:
+        """Tên số nhiều và số ít, sắp xếp theo tên của Portfolio model"""
         verbose_name_plural = 'Portfolio Profiles'
         verbose_name = 'Portfolio'
         ordering = ["name"]
+        
     date = models.DateField(blank=True, null=True)
     name = models.CharField(max_length=200, blank=True, null=True)
     description = models.CharField(max_length=500, blank=True, null=True)
@@ -100,19 +120,24 @@ class Portfolio(models.Model):
     is_active = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
+        """Lưu thông tin dự án vào database và slugify tên dự án"""
         if not self.id:
             self.slug = slugify(self.name)
         super(Portfolio, self).save(*args, **kwargs)
 
     def __str__(self):
+        """Lấy tên của dự án"""
         return self.name
 
     def get_absolute_url(self):
+        """Lấy đường dẫn tuyệt đối của dự án"""
         return f"/portfolio/{self.slug}"
 
 
 class Blog(models.Model):
+    """Blog model"""
     class Meta:
+        """Tên số nhiều và số ít, sắp xếp theo mốc thời gian của Blog model"""
         verbose_name_plural = 'Blog Profiles'
         verbose_name = 'Blog'
         ordering = ["timestamp"]
@@ -127,19 +152,24 @@ class Blog(models.Model):
     is_active = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
+        """Lưu thông tin blog vào database và slugify tên blog"""
         if not self.id:
             self.slug = slugify(self.name)
         super(Blog, self).save(*args, **kwargs)
 
     def __str__(self):
+        """Lấy tên của bài blog"""
         return self.name
 
     def get_absolute_url(self):
+        """Lấy đường dẫn tuyệt đối của blog"""
         return f"/blog/{self.slug}"
 
 
 class Certificate(models.Model):
+    """Certificate model"""
     class Meta:
+        """Tên số nhiều và số ít của Certificate model"""
         verbose_name_plural = 'Certificates'
         verbose_name = 'Certificate'
 
@@ -150,4 +180,5 @@ class Certificate(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
+        """Lấy tên của chứng chỉ"""
         return self.name

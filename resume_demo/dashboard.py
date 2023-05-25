@@ -1,3 +1,4 @@
+# Tùy chỉnh addmin-tools-stats
 from admin_tools_stats.modules import DashboardCharts, get_active_graph
 
 # append an app list module

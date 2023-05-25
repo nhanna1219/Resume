@@ -6,4 +6,6 @@ class MainConfig(AppConfig):
     name = 'main'
 
     def ready(self):
+        """Override hàm ready của class MainConfig và gọi đến file signals.py
+            khi ứng dụng sẵn sàng"""
         import main.signals

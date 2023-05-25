@@ -16,9 +16,11 @@ from . forms import ContactForm
 
 
 class IndexView(generic.TemplateView, HitCountMixin):
+    """Định nghĩa template cho IndexView (Home Page) """
     template_name = "main/index.html"
 
     def get_context_data(self, **kwargs):
+        """Truyền dữ liệu vào template"""
         context = super().get_context_data(**kwargs)
         testimonials = Testimonial.objects.filter(is_active=True)
         certificates = Certificate.objects.filter(is_active=True)
@@ -37,17 +39,20 @@ class IndexView(generic.TemplateView, HitCountMixin):
 
 
 class ContactView(generic.FormView):
+    """Định nghĩa template cho ContactView (Contact Page) """
     template_name = "main/contact.html"
     form_class = ContactForm
     success_url = "/"
 
     def form_valid(self, form):
+        """Lưu contact form vào trong database và gửi message cho người truy cập"""
         form.save()
         messages.success(self.request, 'Thank you. We will be in touch soon.')
         return super().form_valid(form)
 
 
 class PortfolioView(generic.ListView):
+    """Định nghĩa template cho PortfolioView (Portfolio Page) """
     model = Portfolio
     template_name = "main/portfolio.html"
     paginate_by = 10
@@ -57,11 +62,13 @@ class PortfolioView(generic.ListView):
 
 
 class PortfolioDetailView(generic.DetailView):
+    """Định nghĩa template cho PortfolioDetailView (Portfolio Details Page)"""
     model = Portfolio
     template_name = "main/portfolio-detail.html"
 
 
 class BlogView(generic.ListView):
+    """Định nghĩa template cho BlogView (Blog Page) """
     model = Blog
     template_name = "main/blog.html"
     paginate_by = 10
@@ -71,5 +78,6 @@ class BlogView(generic.ListView):
 
 
 class BlogDetailView(generic.DetailView):
+    """Định nghĩa template cho BlogDetailView (Blog Details Page) """
     model = Blog
     template_name = "main/blog-detail.html"

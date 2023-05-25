@@ -1,3 +1,4 @@
+<!-- Modified template admin, thêm vào chart trong skill -->
 {% extends "admin/change_list.html" %}
 {% load static %}
 {% block extrahead %}
@@ -6,6 +7,7 @@
     integrity="sha512-CMF3tQtjOoOJoOKlsS7/2loJlkyctwzSoDK/S40iAB+MqWSaf50uObGQSk5Ny/gfRhRCjNLvoxuCvdnERU4WGg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+    // Tạo chart cho Skill
     var randomColorGenerator = function () {
         return '#' + (Math.random().toString(16) + '0000000').slice(2, 8);
     };
