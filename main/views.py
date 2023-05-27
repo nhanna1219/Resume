@@ -18,7 +18,8 @@ from . forms import ContactForm
 class IndexView(generic.TemplateView, HitCountMixin):
     """Định nghĩa template cho IndexView (Home Page) """
     template_name = "main/index.html"
-
+    count_hit = True
+    
     def get_context_data(self, **kwargs):
         """Truyền dữ liệu vào template"""
         context = super().get_context_data(**kwargs)
@@ -30,7 +31,18 @@ class IndexView(generic.TemplateView, HitCountMixin):
         user = UserProfile.objects.first()
         hit_count = HitCount.objects.get_for_object(user)
         hit_count_response = HitCountMixin.hit_count(self.request, hit_count)
+        
+        # hits = hit_count.hits
+        # hitcontext = context['hitcount'] = {'pk': hit_count.pk}
+        
+        # if hit_count_response.hit_counted:
+        #     hits = hits + 1
+        #     hitcontext['hit_counted'] = hit_count_response.hit_counted
+        #     hitcontext['hit_message'] = hit_count_response.hit_message
+        #     hitcontext['total_hits'] = hits
 
+        print(hit_count_response)
+        
         context["testimonials"] = testimonials
         context["certificates"] = certificates
         context["blogs"] = blogs
